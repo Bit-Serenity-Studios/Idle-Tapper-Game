@@ -8,10 +8,20 @@ module.exports = {
     'prettier',
   ],
   env: {
-    'react-native/react-native': true,
     node: true,
     es2022: true,
     jest: true,
+  },
+  globals: {
+    __DEV__: 'readonly',
+    fetch: 'readonly',
+    requestAnimationFrame: 'readonly',
+    cancelAnimationFrame: 'readonly',
+    setInterval: 'readonly',
+    clearInterval: 'readonly',
+    setTimeout: 'readonly',
+    clearTimeout: 'readonly',
+    JSX: 'readonly',
   },
   parserOptions: {
     ecmaVersion: 2022,

@@ -3,6 +3,7 @@ node_modules/
 dist/
 web-build/
 coverage/
+_expo/
 
 # macOS
 .DS_Store

@@ -1,7 +1,7 @@
 import { memo, useEffect, useRef, useState } from 'react';
 import { StyleSheet, Text, type TextStyle } from 'react-native';
 
-import { type Big, cmp, log10 } from '@/engine/bigNumber';
+import { type Big, log10 } from '@/engine/bigNumber';
 import { format } from '@/engine/format';
 import { colors, typography } from '@/ui/theme';
 
@@ -59,10 +59,10 @@ export const NumberTicker = memo(function NumberTicker({
     return () => {
       if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
     };
-    // We intentionally use cmp() semantics via the value dependency; log10
-    // rounding above already guards against no-op re-renders.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [cmp(value, display) === 0 ? 'same' : `${value.m}:${value.e}`]);
+    // Depending on the target's numeric fields (not the object identity) means
+    // the animation only restarts on a real value change; `display` mutating
+    // each frame must not restart it.
+  }, [value.m, value.e]);
 
   return (
     <Text style={[styles.text, style]} allowFontScaling={false}>

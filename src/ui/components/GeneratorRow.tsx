@@ -12,7 +12,6 @@ import { colors, typography } from '@/ui/theme';
 import { gte } from '@/engine/bigNumber';
 import { generatorProductionPerSecond } from '@/engine/generators';
 import { aggregateUpgradeEffects } from '@/engine/upgrades';
-import { format as fmt } from '@/engine/format';
 
 interface Props {
   generatorId: string;
@@ -21,8 +20,11 @@ interface Props {
 
 /**
  * A single apparatus line: name, owned count, cost of next batch, buy button.
- * Uses granular selectors so we only rerender when this generator's state
- * (or global buy quantity / essence) actually change.
+ *
+ * Selectors here return primitives (numbers, booleans) rather than fresh Big
+ * objects so the row does not re-render on every 100ms tick — only when a
+ * relevant input has actually changed (owned count, buy quantity, affordability
+ * flip, per-generator multiplier).
  */
 export const GeneratorRow = memo(function GeneratorRow({
   generatorId,
@@ -32,18 +34,26 @@ export const GeneratorRow = memo(function GeneratorRow({
   const owned = useGameStore((s) => s.generatorsOwned[generatorId] ?? 0);
   const buyQuantity = useGameStore((s) => s.buyQuantity);
   const resolvedQty = useGameStore((s) => selectResolvedQuantity(s, generatorId));
-  const cost = useGameStore((s) => selectBulkCost(s, generatorId));
+
+  // `gte` returns a boolean — shallow-equal from tick to tick until it flips.
   const affordable = useGameStore((s) => gte(s.essence, selectBulkCost(s, generatorId)));
 
   const perGenMult = useGameStore((s) => {
-    const owned = Object.keys(s.ownedUpgrades).filter((k) => s.ownedUpgrades[k]);
-    const eff = aggregateUpgradeEffects(owned);
+    const ownedIds = Object.keys(s.ownedUpgrades).filter((k) => s.ownedUpgrades[k]);
+    const eff = aggregateUpgradeEffects(ownedIds);
     return eff.perGenerator[generatorId] ?? 1;
   });
+
+  // These derived Bigs are pure functions of the numeric selectors above, so
+  // useMemo caches them from render to render.
   const production = useMemo(
     () => generatorProductionPerSecond(def, owned, perGenMult),
     [def, owned, perGenMult],
   );
+
+  // cost changes when owned or buyQuantity change; for 'max' it also depends
+  // on essence (via resolvedQty). Cheap to recompute when it does.
+  const cost = useGameStore((s) => selectBulkCost(s, generatorId));
 
   const qtyLabel =
     buyQuantity === 'max'
@@ -60,9 +70,7 @@ export const GeneratorRow = memo(function GeneratorRow({
       </View>
       <Text style={styles.flavor}>{def.flavor}</Text>
       <View style={styles.footer}>
-        <Text style={styles.production}>
-          {fmt(production)} /s
-        </Text>
+        <Text style={styles.production}>{format(production)} /s</Text>
         <Pressable
           onPress={onBuy}
           disabled={!affordable || resolvedQty <= 0}
@@ -74,9 +82,7 @@ export const GeneratorRow = memo(function GeneratorRow({
           accessibilityRole="button"
           accessibilityLabel={`Buy ${def.name}`}
         >
-          <Text style={[styles.buyText, !affordable && styles.buyTextDisabled]}>
-            {qtyLabel}
-          </Text>
+          <Text style={[styles.buyText, !affordable && styles.buyTextDisabled]}>{qtyLabel}</Text>
           <Text style={[styles.buyCost, !affordable && styles.buyTextDisabled]}>
             {format(cost)}
           </Text>
