@@ -91,7 +91,6 @@ The IAP is **The Patron's Pact** ($4.99): removes interstitials, shortens vision
 
 ## What isn't wired
 
-- No font asset bundled. The theme uses `EBGaramond` as the family name; the app currently falls back to the system serif. To bundle EB Garamond, drop the OFL files under `assets/fonts/` and load them in `_layout.tsx` with `useFonts`.
 - No real ad SDK. The mock in `src/services/AdsService.ts` grants every reward. Swap for a real implementation to test on device.
 - No real IAP SDK.
 - No tab icon PNGs — icons are alchemical unicode characters styled as tinted text.

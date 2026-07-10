@@ -23,7 +23,7 @@ Choices made autonomously during the build. Written so a future contributor can 
 
 ## Aesthetic
 
-- **No custom bundled font (yet).** The theme names `EBGaramond` as the family; the app falls back to the platform serif. The single follow-up is to drop the OFL files in `assets/fonts/` and call `useFonts` at the root. Not blocking gameplay.
+- **EB Garamond bundled at 400 Regular + 400 Regular Italic** via `@expo-google-fonts/eb-garamond`. Static-import the two TTFs directly from the package's weight subpaths — importing from the package root pulls all ten weights into the Metro bundle because the package's `index.js` does top-level `require()`s on every face. `useFonts` in `app/_layout.tsx` gates render on load together with hydrate. No bold face is bundled — the codebase does not use `fontWeight`, and italic is switched by naming a separate family (`EBGaramondItalic`) rather than the CSS `fontStyle` seam, matching the RN custom-font convention.
 - **Tab icons are alchemical unicode glyphs (🜍 🜛 ☿ 🜎 🜚) tinted with `Text`,** not raster/SVG icons. Consistent with the "text-and-UI-forward" brief and avoids any asset pipeline.
 - **Palette pinned to `theme.ts`** — near-black ink, aged parchment, oxblood, tarnished gold, candle-glow. Dark theme only; the app declares `userInterfaceStyle: "dark"` in `app.json`.
 - **Redacted upgrades render as strike-through** in the same slot the upgrade would occupy. Never shown as empty space, so the player has a sense of "there is more here."
@@ -36,7 +36,6 @@ Choices made autonomously during the build. Written so a future contributor can 
 ## What was deferred
 
 - **Sound.** The `soundEnabled` toggle exists and is persisted; wiring `expo-av` to short candle-crackle / quill-scratch loops is a small follow-up.
-- **Font bundling.** As above.
 - **Real ad SDK.** The interface is stable; production integration is a swap.
 - **Splash / app icons.** Placeholder colored backgrounds. The brand needs an actual mark before ship.
 - **A "restore purchases" affordance in Settings.** `PurchaseService.restore()` exists; the button is a five-line addition.

@@ -1,3 +1,6 @@
+import ebGaramondItalic from '@expo-google-fonts/eb-garamond/400Regular_Italic/EBGaramond_400Regular_Italic.ttf';
+import ebGaramondRegular from '@expo-google-fonts/eb-garamond/400Regular/EBGaramond_400Regular.ttf';
+import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
@@ -21,6 +24,10 @@ export default function RootLayout(): JSX.Element {
   const hydrated = useGameStore((s) => s.hydrated);
   const [bootError, setBootError] = useState<string | null>(null);
   const loadSettings = useSettings((s) => s.load);
+  const [fontsLoaded] = useFonts({
+    EBGaramond: ebGaramondRegular,
+    EBGaramondItalic: ebGaramondItalic,
+  });
 
   useEffect(() => {
     let cancelled = false;
@@ -62,7 +69,7 @@ export default function RootLayout(): JSX.Element {
     );
   }
 
-  if (!hydrated) {
+  if (!hydrated || !fontsLoaded) {
     return (
       <SafeAreaProvider>
         <View style={styles.boot}>
