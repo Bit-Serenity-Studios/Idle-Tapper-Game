@@ -41,15 +41,27 @@ Every piece of user-facing prose in the game, compiled. The single voice is **da
 
 **Salamander Stone** — *A fire that answers to the fire. Athanors burn thrice as hot.*
 
+**The Green Lion** — *It swallows the sun, and the vessel does not break. Athanors burn twice more.*
+
 **Red Chalk** — *The lines bind harder in blood. Ritual Circles yield thrice.*
+
+**Sealed Sigils** — *Nothing enters the circle unbidden. Ritual Circles yield twice again.*
 
 **Unblinking Eyes** — *It has stopped sleeping. This is thought to be good for Essence.*
 
+**Verses of Binding** — *You have taught it to speak. It has taught you to listen. Twice the distillate.*
+
 **The Index Prohibitum** — *A catalogue of every forbidden text. They collate themselves at night.*
+
+**The Anonymous Annotator** — *Someone has written in the margins in a hand you do not know. Twice more Essence.*
 
 **Silver Astrolabe** — *The moon consents to be measured, and thereby to be distilled.*
 
+**The Selenite Prism** — *Moonlight, refracted, yields twice its measure.*
+
 **Unnamed Geometry** — *A shape with more corners than the eye admits. The Sanctum labours thrice as hard.*
+
+**The Ninth Corner** — *You count them again. There are more. The Sanctum yields twice more.*
 
 ---
 
@@ -59,15 +71,21 @@ Every piece of user-facing prose in the game, compiled. The single voice is **da
 
 **The Practised Hand** — *Repetition begets a certain grace. Each Distill yields five times over.*
 
+**The Trembling Hand** — *It shakes as the old alchemists' hands shook. And yet, five times over.*
+
 **The Emerald Tablet, Deciphered** — *As above, so below — you have finally understood the middle line. All production doubles.*
 
 **Azoth** — *The universal solvent, and its worthy opposite. All production doubles again.*
 
 **The Great Signature** — *A single character, deep in an old margin, changes everything. Production trebles.*
 
+**Quintessence** — *You have separated the fifth thing from the four. All production doubles once more.*
+
 **Perpetual Flame** — *The candles no longer gutter. The apparatus works while you sleep — for as long as you sleep, to a point.*
 
 **The Long Vigil** — *The night watches back. Offline production is not diminished.*
+
+**The Second Vigil** — *You have taught yourself to sleep and to watch at once. The vessel holds two days.*
 
 ---
 

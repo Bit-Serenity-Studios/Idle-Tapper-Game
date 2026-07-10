@@ -77,6 +77,28 @@ Concrete first-session run through the balance:
 3. **~35 min** → chain into Athanor (1.1K), Ritual Circle (12K), and start the Bound Homunculus line, plus purchase *The Hand That Pours* (500 Essence → 5x tap) and *Emerald Tablet* (100K → 2x global). Lifetime crosses 1e10, first Great Work available. Meets the 30–45 min target.
 4. **Post-prestige runs** → starting global mult of 1.02x (1 PM), plus `Shard of Nigredo` (2x) if bought → 2.04x. Cost-reduction `Shard of Citrinitas` at 5 PM makes tier upgrades ~15% cheaper. Each cycle compresses.
 
+## Apparatus upgrade tiers
+
+Every generator carries a two-step apparatus upgrade chain. The tier-1 name
+gives the archetype (Silvered Retort, Salamander Stone, Red Chalk, …) and
+multiplies that tier's output by ×3; the tier-2 name closes the imagery
+(Philosophic Mercury, The Green Lion, Sealed Sigils, …) and adds ×2 on top
+for a compounded ×6 on that tier once both are inscribed.
+
+Cost anchors: tier 1 is ~30× the generator's base cost; tier 2 is ~3000×.
+Unlock thresholds mirror this — tier 1 wants 10 of the generator owned, tier
+2 wants 50. This gives each tier a two-beat rhythm inside the Grimoire —
+"unlock, upgrade once, upgrade again" — instead of a single flat multiplier
+per line.
+
+The Forbidden Knowledge chains extend by one link each:
+
+- Tap: The Hand That Pours (×5) → The Practised Hand (×5) → The Trembling Hand (×5).
+  Compounded ×125 tap, endgame.
+- Global mult: The Emerald Tablet (×2) → Azoth (×2) → The Great Signature (×3) → Quintessence (×2).
+  Compounded ×24 global.
+- Offline: Perpetual Flame (24h cap) → The Long Vigil (100% rate) → The Second Vigil (48h cap).
+
 ## When you rebalance
 
 Every value that matters lives in `src/engine/balance.ts` and `src/content/{generators,upgrades,transmutations}.ts`. Change a number, re-run `npm test` (the generator tests bake in the "first-alembic-in-<10 distills" invariant so a wildly wrong new value fails immediately), and re-check the first-session table above.

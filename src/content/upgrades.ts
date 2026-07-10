@@ -92,6 +92,15 @@ export const UPGRADES: readonly UpgradeDef[] = [
     [{ kind: 'generatorMult', generatorId: 'athanor', factor: 3 }],
     { requiresGenerator: { id: 'athanor', count: 10 } },
   ),
+  u(
+    'the_green_lion',
+    'The Green Lion',
+    'It swallows the sun, and the vessel does not break. Athanors burn twice more.',
+    'apparatus',
+    3_000_000,
+    [{ kind: 'generatorMult', generatorId: 'athanor', factor: 2 }],
+    { requires: ['salamander_stone'], requiresGenerator: { id: 'athanor', count: 50 } },
+  ),
 
   // --- Ritual Circle line ---
   u(
@@ -102,6 +111,15 @@ export const UPGRADES: readonly UpgradeDef[] = [
     350_000,
     [{ kind: 'generatorMult', generatorId: 'ritual_circle', factor: 3 }],
     { requiresGenerator: { id: 'ritual_circle', count: 10 } },
+  ),
+  u(
+    'sealed_sigils',
+    'Sealed Sigils',
+    'Nothing enters the circle unbidden. Ritual Circles yield twice again.',
+    'apparatus',
+    30_000_000,
+    [{ kind: 'generatorMult', generatorId: 'ritual_circle', factor: 2 }],
+    { requires: ['red_chalk'], requiresGenerator: { id: 'ritual_circle', count: 50 } },
   ),
 
   // --- Bound Homunculus line ---
@@ -114,6 +132,15 @@ export const UPGRADES: readonly UpgradeDef[] = [
     [{ kind: 'generatorMult', generatorId: 'bound_homunculus', factor: 3 }],
     { requiresGenerator: { id: 'bound_homunculus', count: 10 } },
   ),
+  u(
+    'verses_of_binding',
+    'Verses of Binding',
+    'You have taught it to speak. It has taught you to listen. Twice the distillate.',
+    'apparatus',
+    350_000_000,
+    [{ kind: 'generatorMult', generatorId: 'bound_homunculus', factor: 2 }],
+    { requires: ['unblinking_eyes'], requiresGenerator: { id: 'bound_homunculus', count: 50 } },
+  ),
 
   // --- Occult Library line ---
   u(
@@ -124,6 +151,15 @@ export const UPGRADES: readonly UpgradeDef[] = [
     40_000_000,
     [{ kind: 'generatorMult', generatorId: 'occult_library', factor: 3 }],
     { requiresGenerator: { id: 'occult_library', count: 10 } },
+  ),
+  u(
+    'the_anonymous_annotator',
+    'The Anonymous Annotator',
+    'Someone has written in the margins in a hand you do not know. Twice more Essence.',
+    'apparatus',
+    4_000_000_000,
+    [{ kind: 'generatorMult', generatorId: 'occult_library', factor: 2 }],
+    { requires: ['the_index_prohibitum'], requiresGenerator: { id: 'occult_library', count: 50 } },
   ),
 
   // --- Lunar Observatory line ---
@@ -136,6 +172,15 @@ export const UPGRADES: readonly UpgradeDef[] = [
     [{ kind: 'generatorMult', generatorId: 'lunar_observatory', factor: 3 }],
     { requiresGenerator: { id: 'lunar_observatory', count: 10 } },
   ),
+  u(
+    'the_selenite_prism',
+    'The Selenite Prism',
+    'Moonlight, refracted, yields twice its measure.',
+    'apparatus',
+    60_000_000_000,
+    [{ kind: 'generatorMult', generatorId: 'lunar_observatory', factor: 2 }],
+    { requires: ['silver_astrolabe'], requiresGenerator: { id: 'lunar_observatory', count: 50 } },
+  ),
 
   // --- Inner Sanctum line ---
   u(
@@ -146,6 +191,15 @@ export const UPGRADES: readonly UpgradeDef[] = [
     9_500_000_000,
     [{ kind: 'generatorMult', generatorId: 'inner_sanctum', factor: 3 }],
     { requiresGenerator: { id: 'inner_sanctum', count: 10 } },
+  ),
+  u(
+    'the_ninth_corner',
+    'The Ninth Corner',
+    'You count them again. There are more. The Sanctum yields twice more.',
+    'apparatus',
+    900_000_000_000,
+    [{ kind: 'generatorMult', generatorId: 'inner_sanctum', factor: 2 }],
+    { requires: ['unnamed_geometry'], requiresGenerator: { id: 'inner_sanctum', count: 50 } },
   ),
 
   // --- Forbidden Knowledge (global) ---
@@ -165,6 +219,15 @@ export const UPGRADES: readonly UpgradeDef[] = [
     500_000,
     [{ kind: 'tapMult', factor: 5 }],
     { requires: ['the_hand_that_pours'] },
+  ),
+  u(
+    'the_trembling_hand',
+    'The Trembling Hand',
+    'It shakes as the old alchemists\' hands shook. And yet, five times over.',
+    'forbidden',
+    500_000_000,
+    [{ kind: 'tapMult', factor: 5 }],
+    { requires: ['the_practised_hand'] },
   ),
   u(
     'emerald_tablet',
@@ -193,6 +256,15 @@ export const UPGRADES: readonly UpgradeDef[] = [
     { requires: ['azoth'] },
   ),
   u(
+    'quintessence',
+    'Quintessence',
+    'You have separated the fifth thing from the four. All production doubles once more.',
+    'forbidden',
+    5_000_000_000_000,
+    [{ kind: 'globalMult', factor: 2 }],
+    { requires: ['the_great_signature'] },
+  ),
+  u(
     'perpetual_flame',
     'Perpetual Flame',
     'The candles no longer gutter. The apparatus works while you sleep — for as long as you sleep, to a point.',
@@ -208,6 +280,15 @@ export const UPGRADES: readonly UpgradeDef[] = [
     20_000_000,
     [{ kind: 'offlineRate', rate: 1 }],
     { requires: ['perpetual_flame'] },
+  ),
+  u(
+    'the_second_vigil',
+    'The Second Vigil',
+    'You have taught yourself to sleep and to watch at once. The vessel holds two days.',
+    'forbidden',
+    500_000_000,
+    [{ kind: 'offlineCapSeconds', seconds: 48 * 3600 }],
+    { requires: ['the_long_vigil'] },
   ),
 ] as const;
 
