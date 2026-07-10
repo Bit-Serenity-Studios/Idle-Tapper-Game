@@ -1,6 +1,7 @@
 import { useCallback, useRef, useState } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useShallow } from 'zustand/react/shallow';
 
 import { LORE } from '@/content/lore';
 import { GENERATORS } from '@/content/generators';
@@ -28,9 +29,9 @@ interface Gain {
 }
 
 export default function StudyScreen(): JSX.Element {
-  const essence = useGameStore((s) => s.essence);
-  const production = useGameStore(selectTotalProduction);
-  const visible = useGameStore(selectVisibleGenerators);
+  const essence = useGameStore(useShallow((s) => s.essence));
+  const production = useGameStore(useShallow(selectTotalProduction));
+  const visible = useGameStore(useShallow(selectVisibleGenerators));
   const tap = useGameStore((s) => s.tap);
   const buyGenerator = useGameStore((s) => s.buyGenerator);
   const pendingOffline = useGameStore((s) => s.pendingOffline);
@@ -109,8 +110,8 @@ export default function StudyScreen(): JSX.Element {
 }
 
 function HiddenTiers(): JSX.Element | null {
-  const visibleIds = useGameStore((s) =>
-    selectVisibleGenerators(s).map((g) => g.id),
+  const visibleIds = useGameStore(
+    useShallow((s) => selectVisibleGenerators(s).map((g) => g.id)),
   );
   const hidden = GENERATORS.filter((g) => !visibleIds.includes(g.id));
   if (hidden.length === 0) return null;

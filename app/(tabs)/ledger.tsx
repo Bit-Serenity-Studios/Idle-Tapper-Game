@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useShallow } from 'zustand/react/shallow';
 
 import { LORE } from '@/content/lore';
 import { format, formatDuration, formatNumber } from '@/engine/format';
@@ -22,7 +23,7 @@ import { colors, space, typography } from '@/ui/theme';
  */
 export default function LedgerScreen(): JSX.Element {
   const state = useGameStore();
-  const production = useGameStore(selectTotalProduction);
+  const production = useGameStore(useShallow(selectTotalProduction));
   const bloodMoon = useGameStore(selectBloodMoonActive);
   const haptics = useHaptics();
 

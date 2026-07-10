@@ -1,5 +1,6 @@
 import { memo, useMemo } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { useShallow } from 'zustand/react/shallow';
 
 import { format } from '@/engine/format';
 import { GENERATOR_BY_ID } from '@/content/generators';
@@ -52,8 +53,9 @@ export const GeneratorRow = memo(function GeneratorRow({
   );
 
   // cost changes when owned or buyQuantity change; for 'max' it also depends
-  // on essence (via resolvedQty). Cheap to recompute when it does.
-  const cost = useGameStore((s) => selectBulkCost(s, generatorId));
+  // on essence (via resolvedQty). Cheap to recompute when it does. Big is an
+  // object so shallow-compare is required — reference equality would spin.
+  const cost = useGameStore(useShallow((s) => selectBulkCost(s, generatorId)));
 
   const qtyLabel =
     buyQuantity === 'max'
