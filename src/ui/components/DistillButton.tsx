@@ -1,6 +1,7 @@
 import { useRef } from 'react';
-import { Animated, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Animated, Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
+import flaskIcon from '../../../assets/icons/flask.png';
 import { colors, typography } from '@/ui/theme';
 import { CandleFlicker } from './CandleFlicker';
 
@@ -42,8 +43,11 @@ export function DistillButton({ onPress, label, hint }: Props): JSX.Element {
             },
           ]}
         />
-        <View style={styles.candleWrap}>
-          <CandleFlicker size={32} />
+        <View style={styles.iconStack}>
+          <View style={styles.halo} pointerEvents="none">
+            <CandleFlicker size={88} />
+          </View>
+          <Image source={flaskIcon} style={styles.flask} resizeMode="contain" />
         </View>
         <Text style={styles.label}>{label}</Text>
       </Animated.View>
@@ -72,8 +76,22 @@ const styles = StyleSheet.create({
     borderRadius: 110,
     backgroundColor: colors.candle,
   },
-  candleWrap: {
-    marginBottom: 12,
+  iconStack: {
+    width: 88,
+    height: 88,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 14,
+  },
+  halo: {
+    ...StyleSheet.absoluteFillObject,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  flask: {
+    width: 62,
+    height: 62,
+    tintColor: colors.parchment,
   },
   label: {
     fontFamily: typography.serif,
