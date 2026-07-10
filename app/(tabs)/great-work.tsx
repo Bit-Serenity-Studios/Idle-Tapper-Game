@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Modal, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
+import { transmutationMechanic } from '@/content/effectFormat';
 import { LORE } from '@/content/lore';
 import { TRANSMUTATIONS, stageName, type TransmutationDef } from '@/content/transmutations';
 import { format } from '@/engine/format';
@@ -145,6 +146,7 @@ function TransmutationCard({
           {owned ? 'Kept' : `${def.cost} PM`}
         </Text>
       </View>
+      <Text style={styles.cardMechanic}>{transmutationMechanic(def)}</Text>
       <Text style={styles.cardFlavor}>{def.flavor}</Text>
     </Pressable>
   );
@@ -262,12 +264,21 @@ const styles = StyleSheet.create({
     color: colors.gold,
     fontVariant: ['tabular-nums'],
   },
+  cardMechanic: {
+    fontFamily: typography.serif,
+    fontSize: 11,
+    letterSpacing: 1.4,
+    textTransform: 'uppercase',
+    color: colors.gold,
+    marginTop: 6,
+    fontVariant: ['tabular-nums'],
+  },
   cardFlavor: {
     fontFamily: typography.serifItalic,
     fontStyle: 'italic',
     fontSize: 13,
     color: colors.parchmentFaint,
-    marginTop: 6,
+    marginTop: 4,
     lineHeight: 19,
   },
   backdrop: {

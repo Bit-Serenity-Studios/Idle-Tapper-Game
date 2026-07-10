@@ -57,18 +57,22 @@ export const LORE = {
   offlineBody: (formatted: string, duration: string) =>
     `While you kept the long vigil these ${duration}, the athanor burned on. ${formatted} Essence has been distilled.`,
   offlineDouble: 'Consult the Spirits',
+  offlineDoubleMechanic: '×2 offline earnings (watch a short ad)',
   offlineDoubleHint: 'Sacrifice a vision to double what was distilled.',
   offlineClaim: 'Accept',
   offlineCapReached: (dropped: string) =>
     `The vessel would take no more. ${dropped} of your vigil went uncredited.`,
 
   boostBloodMoonName: 'Blood Moon',
+  boostBloodMoonMechanic: '×2 production for 4 minutes',
   boostBloodMoonFlavor: 'For four minutes, the study distils twice as fast.',
   boostTimeDilationName: 'Time Dilation Ritual',
+  boostTimeDilationMechanic: '+1 hour of production, instant',
   boostTimeDilationFlavor: 'A single hour of the Work, compressed into the present moment.',
   boostAdCta: 'Consult the Spirits (watch a vision)',
 
   commissionTitle: 'A Commission',
+  commissionMechanic: 'Reach the goal within 24 hours to earn a 2.5× Essence payout.',
   commissionFlavor:
     'A letter arrived under the door, with no seal. You are asked to distil a certain measure by dawn.',
   commissionProgress: 'Progress',
@@ -76,12 +80,14 @@ export const LORE = {
   commissionExpired: 'The candle guttered. The patron has departed.',
 
   lunarTitle: 'Lunar Phases',
+  lunarMechanic: 'Daily Essence bonus. Day 7 grants 1 Prima Materia.',
   lunarFlavor: (day: number) =>
     `The moon shows its ${['new', 'waxing crescent', 'first quarter', 'waxing gibbous', 'full', 'waning gibbous', 'last quarter'][day - 1] ?? 'shrouded'} face.`,
   lunarClaim: 'Attend the moon',
   lunarAlreadyClaimed: 'You have attended the moon already tonight.',
 
   patronPact: 'The Patron’s Pact',
+  patronPactMechanic: 'One-time purchase. Removes interstitial ads. Shortens vision cooldowns.',
   patronPactBody:
     'A patron of a certain kind will remove the interstitial visions from your practice, and shorten the cooldown of the spirits you consult.',
   patronPactPrice: '$4.99',

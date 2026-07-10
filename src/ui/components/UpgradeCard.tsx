@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
+import { upgradeMechanic } from '@/content/effectFormat';
 import { GENERATOR_BY_ID } from '@/content/generators';
 import { LORE } from '@/content/lore';
 import { type UpgradeDef } from '@/content/upgrades';
@@ -32,6 +33,7 @@ export const UpgradeCard = memo(function UpgradeCard({ def, onBuy }: Props): JSX
     return (
       <View style={[styles.card, styles.cardOwned]}>
         <Text style={styles.title}>{def.name}</Text>
+        <Text style={styles.mechanic}>{upgradeMechanic(def)}</Text>
         <Text style={styles.flavor}>{def.flavor}</Text>
         <Text style={styles.inscribed}>Inscribed</Text>
       </View>
@@ -64,6 +66,7 @@ export const UpgradeCard = memo(function UpgradeCard({ def, onBuy }: Props): JSX
       ]}
     >
       <Text style={styles.title}>{def.name}</Text>
+      <Text style={styles.mechanic}>{upgradeMechanic(def)}</Text>
       <Text style={styles.flavor}>{def.flavor}</Text>
       <Text style={[styles.cost, !affordable && styles.costUnaffordable]}>
         {format(def.cost)} Essence
@@ -108,6 +111,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: colors.locked,
     textDecorationLine: 'line-through',
+  },
+  mechanic: {
+    fontFamily: typography.serif,
+    fontSize: 11,
+    letterSpacing: 1.4,
+    textTransform: 'uppercase',
+    color: colors.gold,
+    marginTop: 6,
+    fontVariant: ['tabular-nums'],
   },
   flavor: {
     fontFamily: typography.serifItalic,

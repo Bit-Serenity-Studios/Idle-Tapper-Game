@@ -108,6 +108,7 @@ export default function LedgerScreen(): JSX.Element {
         </Section>
 
         <Section title={LORE.lunarTitle}>
+          <Text style={styles.mechanic}>{LORE.lunarMechanic}</Text>
           <Text style={styles.flavor}>{LORE.lunarFlavor(lunarDay)}</Text>
           <Text style={styles.streak}>
             Streak: {state.loginStreak} {state.loginStreak === 1 ? 'night' : 'nights'}
@@ -125,6 +126,7 @@ export default function LedgerScreen(): JSX.Element {
 
         {commission ? (
           <Section title={LORE.commissionTitle}>
+            <Text style={styles.mechanic}>{LORE.commissionMechanic}</Text>
             <Text style={styles.flavor}>{LORE.commissionFlavor}</Text>
             <Text style={styles.streak}>
               {`Distil ${format(commission.goalEssence)} Essence before the candle gutters.`}
@@ -152,12 +154,14 @@ export default function LedgerScreen(): JSX.Element {
         <Section title="Visions">
           <VisionButton
             name={LORE.boostBloodMoonName}
+            mechanic={LORE.boostBloodMoonMechanic}
             flavor={LORE.boostBloodMoonFlavor}
             cooldown={bloodMoonCooldown}
             onPress={requestBloodMoon}
           />
           <VisionButton
             name={LORE.boostTimeDilationName}
+            mechanic={LORE.boostTimeDilationMechanic}
             flavor={LORE.boostTimeDilationFlavor}
             cooldown={timeDilationCooldown}
             onPress={requestTimeDilation}
@@ -200,11 +204,13 @@ function StatLine({ label, value }: { label: string; value: string }): JSX.Eleme
 
 function VisionButton({
   name,
+  mechanic,
   flavor,
   cooldown,
   onPress,
 }: {
   name: string;
+  mechanic: string;
   flavor: string;
   cooldown: number;
   onPress: () => void;
@@ -217,6 +223,7 @@ function VisionButton({
       style={[styles.vision, !ready && styles.btnDisabled]}
     >
       <Text style={styles.visionName}>{name}</Text>
+      <Text style={styles.mechanic}>{mechanic}</Text>
       <Text style={styles.visionFlavor}>{flavor}</Text>
       <Text style={styles.visionCta}>
         {ready ? LORE.boostAdCta : `Available in ${formatDuration(cooldown)}`}
@@ -264,6 +271,16 @@ const styles = StyleSheet.create({
     fontFamily: typography.serif,
     fontSize: 14,
     color: colors.gold,
+    fontVariant: ['tabular-nums'],
+  },
+  mechanic: {
+    fontFamily: typography.serif,
+    fontSize: 11,
+    letterSpacing: 1.4,
+    textTransform: 'uppercase',
+    color: colors.gold,
+    marginTop: 4,
+    marginBottom: 4,
     fontVariant: ['tabular-nums'],
   },
   flavor: {

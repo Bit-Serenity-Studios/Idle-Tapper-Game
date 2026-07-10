@@ -53,7 +53,10 @@ export function OfflineModal({ summary }: Props): JSX.Element {
                   : `${formatDuration(cooldownRemaining)} until the spirits will answer`}
               </Text>
               {doubleAvailable ? (
-                <Text style={styles.btnPrimaryHint}>{LORE.offlineDoubleHint}</Text>
+                <>
+                  <Text style={styles.btnPrimaryMechanic}>{LORE.offlineDoubleMechanic}</Text>
+                  <Text style={styles.btnPrimaryHint}>{LORE.offlineDoubleHint}</Text>
+                </>
               ) : null}
             </Pressable>
             <Pressable onPress={clear} style={[styles.btn, styles.btnSecondary]}>
@@ -127,6 +130,15 @@ const styles = StyleSheet.create({
     letterSpacing: 1.5,
     textTransform: 'uppercase',
     textAlign: 'center',
+  },
+  btnPrimaryMechanic: {
+    fontFamily: typography.serif,
+    fontSize: 11,
+    letterSpacing: 1.4,
+    textTransform: 'uppercase',
+    color: colors.gold,
+    marginTop: 4,
+    fontVariant: ['tabular-nums'],
   },
   btnPrimaryHint: {
     fontFamily: typography.serifItalic,

@@ -101,6 +101,7 @@ export default function SettingsScreen(): JSX.Element {
         </Section>
 
         <Section title="The Patron’s Pact">
+          <Text style={styles.mechanic}>{LORE.patronPactMechanic}</Text>
           <Text style={styles.flavor}>{LORE.patronPactBody}</Text>
           <Pressable
             onPress={doPurchase}
@@ -210,6 +211,15 @@ const styles = StyleSheet.create({
     fontFamily: typography.serif,
     fontSize: 14,
     color: colors.parchmentDim,
+  },
+  mechanic: {
+    fontFamily: typography.serif,
+    fontSize: 11,
+    letterSpacing: 1.4,
+    textTransform: 'uppercase',
+    color: colors.gold,
+    marginBottom: 4,
+    fontVariant: ['tabular-nums'],
   },
   flavor: {
     fontFamily: typography.serifItalic,
