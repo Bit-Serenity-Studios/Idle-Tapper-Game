@@ -69,7 +69,7 @@ export const LORE = {
   boostTimeDilationName: 'Time Dilation Ritual',
   boostTimeDilationMechanic: '+1 hour of production, instant',
   boostTimeDilationFlavor: 'A single hour of the Work, compressed into the present moment.',
-  boostAdCta: 'Consult the Spirits (watch a vision)',
+  boostAdCta: 'Consult the Spirits (watch an ad)',
 
   commissionTitle: 'A Commission',
   commissionMechanic: 'Reach the goal within 24 hours to earn a 2.5× Essence payout.',

@@ -135,7 +135,7 @@ The offer to watch a rewarded ad reads **Consult the Spirits** — *Sacrifice a 
 
 **Time Dilation Ritual** — *A single hour of the Work, compressed into the present moment.*
 
-Both are surfaced as **Consult the Spirits (watch a vision)** — the ad prompt is diegetic.
+Both are surfaced as **Consult the Spirits (watch an ad)** — the button name is diegetic; the parenthetical is honest so a player never has to decode what tapping it does.
 
 ---
 
